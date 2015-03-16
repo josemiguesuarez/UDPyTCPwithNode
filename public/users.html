@@ -1,0 +1,62 @@
+<div class="JM_saveButton" style="float:right" ng-click="logout()">
+    Cerrar Sesión
+</div>
+<div style ="width:987px;margin:0 auto 0 auto;">
+    <div style="height:89px;" class = "JM_title">
+        Usuarios
+    </div>
+    <div ng-hide="newMode" class = "JM_list" style ="margin:0 auto 0 auto;text-align: center;font-size:30px;">
+        <div class = "JM_listItem" ng-repeat="user in users" ng-click="editUser(user)">
+            {{ user.name }}
+        </div>
+        <div  class="JM_listItem JM_listAdd" ng-click="newMode=true">
+            nuevo
+        </div>
+    </div>
+    <div ng-show="newMode" class="JM_subTitleBig; padding:0px" >
+        <form name="userForm" ng-submit="addUser()">
+            <div class ="JM_formName">
+                Nombre: 
+            </div>
+            <input class ="JM_formInput" ng-model="formData.name" type="text" placeholder="nombre del nuevo usuario" required/>
+            <div class ="JM_formName">
+                Login: 
+            </div>
+            <input class ="JM_formInput" ng-model="formData.username"  type="text" placeholder="login del usuario" required/>
+            <div class ="JM_formName">
+                Contraseña: 
+            </div>
+            <input class ="JM_formInput" ng-model="formData.password" type="password" placeholder="contraseña" required/>
+            <div class ="JM_formName">
+                Confirmar Contraseña: 
+            </div>
+            <input class ="JM_formInput" ng-model="formData.secondPass" type="password" placeholder="confirmar contraseña" required/>
+            <div style="float:left;color:white" ng-show="formData.password !== formData.secondPass">
+                La contraseña no coincide
+            </div>
+            <div class ="JM_formName">
+                Tipo de usuario: 
+            </div>
+            <select class ="JM_formInput" ng-model="formData.type"  required>
+                <option value="usuario">Usuario (responsable) </option>
+                <option value="admin">Usuario (admin) </option>
+                <option value="root">Administrador</option>
+            </select>
+            <div ng-show="formData.type==='usuario'"> 
+                <div class ="JM_formName">
+                    Gerencia: 
+                </div>
+                <select class ="JM_formInput" ng-model="formData._gerencia"  ng-options="responsable._id as responsable.name for responsable in responsables" ng-required="formData.type==='usuario'">
+                </select>
+            </div>
+
+
+            <div style="clear:both"> </div>
+            <input ng-show="userForm.$valid" type="submit" style="display:inline-block" class="JM_aceptButton" value="Aceptar" />
+
+            <button style="display:inline-block" class="JM_cancelButton" ng-click="newMode=false">
+                Cancelar
+            </button>
+        </form>
+    </div>
+</div>

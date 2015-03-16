@@ -1,0 +1,221 @@
+
+    <div class="JM_saveButton" ng-click="logout()">
+        Cerrar Sesión
+    </div>
+
+    <!-- SELECT PLAN -->
+    <div style ="width:987px;margin:0 auto 0 auto;" ng-hide="planSelected">
+        <div style="height:89px;" class = "JM_title">
+            Plan Estratégico
+        </div>
+        <div class="JM_subTitleBig" style="height:144px">
+            <div style="display:inline-block; float:left;">
+                LA MEGA: 
+            </div>
+            <div style="display:inline-block; font-size:21px;">
+                “En el año 2020, el Grupo Empresarial en Línea S.A, será la primera red multiservicios del país,  sostenible financieramente, generadora de valor para sus grupos de referencia.  Ubicada entre los 10 mejores empleadores del país.  Responsable  socialmente.”
+            </div>
+        </div>
+        <div class = "JM_list" style ="text-align: center;font-size:30px;overflow: visible;">
+            <div class = "JM_listItem" ng-repeat="plan in planes" >
+                <div ng-click="selectPlan($index)" style="margin-right:34px">
+                    {{ plan.name }} 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="width:987px;margin:0 auto 0 auto;" ng-show="planSelected">
+        <div  ng-click ="goBack()"style="height:89px;" class = "JM_title" >
+            Plan Estratégico {{planes[planSelected-1].name}}
+        </div>
+        <!-- SELECT Obj Estrategico -->
+        <div ng-hide="objESelected" class = "JM_list" style ="margin:0 auto 0 auto;text-align: center;font-size:20px;">
+            <div class="JM_subTitleBig">
+                ESTADO DE INDICADORES
+            </div>
+            <div style="width:377px;display:inline-block">
+                <div class="JM_list" style="background-color: rgba(255, 255, 255, 0.1);height:377px">
+                    <div class ="JM_listItem" ng-class ="{cumplido:isResponsableSelected(null)}" ng-click="selectResponsableIndicadores(null)">
+                        Cumplimiento de la gerencia
+                    </div>
+                </div>
+            </div><div style="width:610px;background-color:rgba(255, 255, 255, 0.4);padding-left:21px;padding-right:21px;display:inline-block;height:405px;vertical-align:top">
+            <div id="chart_div" style="width:568px; height:355px"></div>
+            <div id="JM_meses">
+                <ul>
+                    <li class="cumplido" ng-class="{cumplidoSelected:isMesOnIndicadoresSelected(mes)}" ng-repeat="mes in meses" ng-click="selectMesOnIndic(mes)">
+                        {{mes}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="JM_subTitleBig">
+            OBJETIVOS ESTRATÉGICOS
+        </div>
+        <div ng-hide="edit">
+            <div style="height:89px; padding:0px"class = "JM_listItem" ng-repeat="objEstrategico in planes[planSelected-1].ObjetivosE" ng-click="selectObjE(objEstrategico)">
+                <div style="height:89px;float:left;width: 610px">
+                    <b>{{ objEstrategico.name }}</b>
+                </div>
+                <div class="JM_celdaConBorde" style="width: 233px">
+                    Objetivos Tácticos: <br>
+                    {{ objEstrategico.numObjT }}
+                </div>
+                <div class="JM_celdaConBorde" style="width:144px">
+                    Acciones: <br>
+                    {{ objEstrategico.numAcciones }}
+                </div>
+            </div>
+            <div style="height:89px; padding:0px" class = "JM_listItem">
+                <div style="height:89px;float:left;width: 610px">
+                    
+                </div>
+                <div class="JM_celdaConBorde" style="width: 233px">
+                    Total Objetivos Tácticos: <br>
+                    {{ totObjTacticos }}
+                </div>
+                <div class="JM_celdaConBorde" style="width:144px">
+                    Total Acciones: <br>
+                    {{ totAcciones }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO Obj Estrategico SELECTED-->        
+    <div ng-show="objESelected" style="width:987px;">
+        <div class = "JM_list" style ="font-size:15px;width:100%;">
+            <div class = "JM_listItem" style="text-align:center;height:55px;padding-left:89px;padding-right:89px;background-color: rgba(255, 255, 255, 0.8);">
+                {{objESelected.name}}
+            </div>
+        </div>
+        <div style="height:610px;">
+            <!-- SELECT Obj Tactico -->
+            <div style="width:377px;display:inline-block">
+                <div class="JM_subTitleBig">
+                    OBJETIVOS TÁCTICOS:
+                </div>
+                <div class="JM_list" style="height:555px">
+                    <!-- SHOW LIST Obj Tacticos -->
+                    <div ng-hide="edit">
+                        <div class ="JM_listItem" ng-class ="{JM_listItemSelected:isTacticSelected(objTactico._id)}" ng-repeat ="objTactico in objESelected.ObjetivosT" ng-click="selectObjT(objTactico)">
+                            {{objTactico.name}}
+                            <div ng-show="isTacticSelected(objTactico._id)"class="JM_informationPanel">
+                                <div class="JM_subTitle">
+                                    Indicador:
+                                </div>
+                                <div>
+                                    {{objTactico.indicador}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><div style="width:610px;background-color:rgba(255, 255, 255, 0.4);padding-left:21px;padding-right:21px;display:inline-block;height:610px;vertical-align:top">
+
+            <div class="JM_subTitle">
+                Acciones:
+            </div>
+            <div>
+                <!-- SHOW LIST Acciones -->
+                <div class="JM_list" style="height: 568px;">
+                    <div class="JM_listItem" ng-repeat="accion in objTSelected.acciones" >
+                        <!-- SHOW Accion -->
+                        <div ng-hide="isAccionSelected(accion)">
+                            <div class="JM_editButton" ng-click="selectAccion(accion)">
+                                edit
+                            </div>
+                            <div style="font-weight: bold;">
+                                {{$index+1}}. {{accion.name}}
+                            </div>
+                            <div>
+                                <b>Indicador:</b> {{accion.indicador}}
+                            </div>
+                            <div>
+                                <b>Responsable:</b> {{getResponsableById(accion._responsable).name}}
+                            </div>
+                            <div id="JM_meses">
+                                <ul>
+                                    <li ng-class="accion[mes]" ng-repeat="mes in meses">
+                                        {{mes}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="JM_documents">
+                                <div class="JM_document JM_doc_edit_size cumplido" ng-repeat="documento in accion.documentos" ng-click="openPage(documento.url)">
+                                    {{documento.name}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- EDIT Accion -->
+                        <div ng-show="isAccionSelected(accion)">
+                            <div class="JM_editButton" ng-click="selectAccion(accion)">
+                                save
+                            </div>
+                            <div style="font-weight: bold;">
+                                {{$index+1}}. {{accion.name}}
+                            </div>
+                            <div>
+                                <b>Indicador:</b> {{accion.indicador}}
+                            </div>
+                            <div>
+                                <b>Responsable:</b> {{getResponsableById(accion._responsable).name}}
+                            </div>
+                            <div id="JM_meses">
+                                <b>Cumplimiento:</b>
+                                <ul>
+                                    <li ng-class="accion[mes]" ng-repeat="mes in meses" ng-click="selectMes(mes)">
+                                        {{mes}}
+                                        <div class="JM_popUp" ng-show="isMesSelected(mes)">
+                                            <div class="JM_flecha">
+                                            </div>
+                                            <div class="JM_popUpOptions">
+                                                <div class="JM_opcion noAplica" ng-click="setStateMonth(null)">
+                                                    No Aplica
+                                                </div>
+                                                <div class="JM_opcion noIniciado" ng-click="setStateMonth('noIniciado')">
+                                                    Por iniciar
+                                                </div>
+                                                <div class="JM_opcion noCumplido" ng-click="setStateMonth('noCumplido')">
+                                                    No cumplido
+                                                </div>
+                                                <div class="JM_opcion enEjecucion" ng-click="setStateMonth('enEjecucion')">
+                                                    En ejecución
+                                                </div>
+                                                <div class="JM_opcion cumplido" ng-click="setStateMonth('cumplido')">
+                                                    Cumplido
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <b>Documentos Adjuntos:</b>
+                                <div class="JM_documents">
+                                    <div class="JM_document JM_doc_edit_size cumplido" ng-repeat="documento in accion.documentos">
+                                        <input style="width:100%" ng-model="documento.name" type="text" placeholder="Descripción del docuemnto.">
+                                        <input style="width:100%" ng-model="documento.url" type="text" placeholder="Url del documento.">
+                                    </div>
+                                    <div class="JM_document JM_doc_edit_size JM_listAdd" ng-click="addDocument(accion)">
+                                        Nuevo Documento Adjunto
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>

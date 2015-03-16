@@ -1,0 +1,127 @@
+    
+<div ng-show="edit" class="JM_saveButton" ng-click="savePlan()" style="top:50px">
+    Guardar
+</div>
+<div class="JM_logoutButton" ng-click="logout()">
+    Cerrar Sesión
+</div>
+<div ng-show="showDialog" style="position: fixed;top:0px;width: 100%;height:100%;background-color: rgba(171,171,171, 0.5); z-index:2000">
+    <div style="top:30%;padding:21px 34px; margin: 1em 25%;position: fixed;background: #00419b; color:white;height:144px;widht:610px">
+        <div class="JM_warningImg" style="float:left">
+        </div>
+        <div style="height:78px; margin-left:102px;">
+            {{dialogMsg}}
+        </div>
+
+        <div >
+            <div class="JM_aceptButton" style="display:inline-block;float:right" ng-click="showDialog=false">
+                cancelar
+            </div>
+            <div class="JM_cancelButton" style="display:inline-block;float:right" ng-click="nextAfterConfimr();showDialog=false">
+                eliminar
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SELECT PLAN -->
+<div style ="width:987px;margin:0 auto 0 auto;">
+    <div style="height:89px;" class = "JM_title">
+        UDP & TCP GPS 
+    </div>
+    <div class="redondeado">
+        <div class="cumplido" ng-class="{cumplidoSelected:refresh}" ng-click="refresh = !refresh;">
+            REAL TIME
+        </div>
+        <div class="cumplido"  ng-click="update()">
+            UPDATE
+        </div>
+    </div>
+    <div class="redondeado">
+        <div class="cumplido" ng-class="{cumplidoSelected:typeToShow == null}" ng-click="typeToShow = null">
+            ALL
+        </div>
+        <div class="cumplido" ng-class="{cumplidoSelected:typeToShow == 'UDP'}" ng-click="typeToShow = 'UDP'">
+            UDP
+        </div>
+        <div class="cumplido" ng-class="{cumplidoSelected:typeToShow == 'TCP'}" ng-click="typeToShow = 'TCP'">
+            TCP
+        </div>
+    </div>
+    <div class="redondeado">
+        <div class="cumplido" ng-click="generarReporte()">
+            Generar Reporte
+        </div>
+    </div>
+    <div class="redondeado">
+        <div class="cumplido" ng-click="eleiminarRegistros()">
+            Eliminar Registros
+        </div>
+    </div>
+    
+    <div class="JM_subTitleBig" style="height:233px">
+        <div my-map=""></div>
+        <dis my-chart =""></div>
+            <div class = "JM_list" style ="text-align: center;font-size:20px;overflow: visible;">
+                <div class = "JM_listItem" style="height:34px; background-color:white">
+                    <div style = "width:144px;float:left">
+                        Fecha 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px;float:left">
+                        IP  
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:89px; height:100%">
+                        ID  
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px; height:100%">
+                        Latitud
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px; height:100%">
+                        Longitud
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px; height:100%">
+                        Altura 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:89px; height:100%">
+                        Velocidad
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:34px; height:100%">
+                        Servicio
+                    </div>
+                </div>
+            </div>
+            <div class = "JM_list" style ="text-align: center;font-size:20px;overflow: visible;">
+                <div class = "JM_listItem" ng-repeat="status in statusLog| orderBy:'_id':true" style="height:34px" ng-show="!typeToShow || status.serviceType == typeToShow">
+                    <div style = "width:144px;float:left">
+                        {{ dateFromObjectId(status._id)| date : 'short' : timezone }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px;float:left">
+                        {{ status.clientIP }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:89px; height:100%">
+                        {{ status.clientID }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px; height:100%">
+                        {{ status.lat }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px; height:100%">
+                        {{ status.lng }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:144px; height:100%">
+                        {{ status.alt }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:89px; height:100%">
+                        {{ status.vel }} 
+                    </div>
+                    <div class="JM_celdaConBorde" style = "width:34px; height:100%">
+                        {{ status.serviceType }} 
+                    </div>
+                    <div style="float:right;" class="JM_deleteButton" ng-click="deleteStatus(status)">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

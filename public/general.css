@@ -1,0 +1,381 @@
+h1, .JM_title, .tituloDos{
+  font-family: 'Roboto', sans-serif;
+}
+p, body, #paragraphLamega{
+  font-family: 'Abel', sans-serif;
+  font-size: 17px;
+}
+#paragraphLamega{
+  color:#3e3e3e;
+}
+
+header {
+  display: block;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-bottom: solid 3px #003570;
+  margin-bottom: 30px;
+  width: 100%;
+  z-index: 100000; 
+}
+.title{
+  display: inline-block;
+  float: left;
+  border-left: 1px solid lightgrey;
+  margin-left: 15px;
+  padding-left: 15px;
+}
+.tituloDos{
+  color: #004498;
+}
+.title h1{
+  color: #004498;
+}
+
+.headerContainer{
+  width: 987px;
+  display: block;
+  margin: 0 auto;
+  padding: 15px 0;
+  overflow: hidden;
+}
+
+.logo{
+  display: inline-block;
+  float: left;
+}
+
+.logo li{
+  list-style: none;
+}
+
+body { 
+  background: #00419b; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-bottom: 20px;
+}
+
+
+.JM_body {
+  position: fixed;
+  top: 100px;
+  width: 100%;
+  overflow: scroll;
+  background-color: #197519; 
+}
+
+.JM_video {
+  vertical-align: top;
+  min-width: 61.8%;
+  height: 100%;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.3); 
+}
+
+.JM_videoYouTube {
+  width: 100%;
+  height: 100%; 
+}
+
+.JM_list {
+  width: 100%;
+  height: 100%;
+  overflow-y: visible; 
+  background: none !important;
+}
+.JM_listItem {
+  width: 100%;
+  padding: 5px;
+  margin: 2px 0;
+  background: #cadaed;
+  border-radius: 6px;
+  color: #003475;
+}
+.JM_listItem:hover, .JM_listAdd:hover { 
+  background: #92bbed;
+}
+.JM_listAdd {
+}
+.JM_listAddForm{
+  background-color: #cadaed;
+}
+.JM_listAddForm:hover{
+  background-color: #cadaed;
+}
+.JM_listEdit {
+  height: 34px;
+}
+.JM_listEdit:hover{
+  background-color: rgb(53, 86, 177);
+}
+
+.JM_listItemSelected{
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.JM_listHorizontal {
+  text-align: center;
+  margin:0 auto 0 auto;
+  min-width: 38.2%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.JM_listHorizontalItem {
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px; 
+  min-width: 25%;
+}
+.JM_title{
+ font-size: 55px;
+ text-align: center;
+ vertical-align: middle;
+ color: white;
+  margin-top: 30px !important;
+ background: url("img/tite.png");
+
+}
+.JM_subTitle{
+  font-weight: bold;
+  border-top-right-radius:8px;
+  border-top-left-radius:8px;
+  background-color: rgb(191, 24, 18);
+  padding-left: 13px;
+  width: 144px;
+  color: white;
+  height: 21px;
+}
+.JM_informationPanel{
+ background-color:rgba(255, 255, 255, 0.9);
+ margin-top:8px;
+ height:144px;
+ padding-left:13px;
+ padding-right: 13px;
+}
+.JM_subTitleBig{
+  background-color:white;
+  height:55px;
+  padding:13px;
+  color:#004498;
+  font-size:25px;
+  text-align: justify;
+  margin-top: 2px;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 15px;
+}
+.JM_saveButton, .JM_logoutButton{
+  position: absolute;
+  margin: 0 auto 0 auto;
+  top: 10px;
+  right: 183px;
+  height: 37px;
+  background: #D50000;
+  width: 100px;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 2.3em;
+  cursor: pointer;
+}
+#JM_meses ul{
+ list-style-type: none;
+ text-align: center;
+ padding: 8px;
+ margin: 0px;
+ background-color: #aac4e3;
+}
+#JM_meses li{
+  border-radius: 5px;
+  display:inline-block;
+  text-align: center;
+  padding: 0px;
+  margin: 1px;
+  width: 42px;
+}
+
+.JM_opcion{
+  width: 89px;
+  height: 21px;
+
+}
+.noAplica{
+  background-color: hsl(227,72%,57%);
+}
+.noCumplido{
+  background-color: hsl(356,86%,42%);
+}
+.noCumplido:hover{
+  background-color: hsl(356,86%,49%);
+}
+.noIniciado{
+  background-color: hsl(182,51%,76%);
+}
+.noIniciado:hover{
+  background-color: hsl(182,51%,86%);
+}
+.enEjecucion{
+  background-color: hsl(59,86%,42%);
+}
+.enEjecucion:hover{
+  background-color: hsl(59,86%,49%);
+}
+.cumplido{
+  background-color: #2f73c5;
+  color:white;
+  min-width: 34px;
+  float:left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.cumplido:hover{
+  background-color: #10488c;
+  color: white;
+}
+.redondeado{
+  color:white;
+  border: solid 2px white;
+  border-radius: 2px;
+  display: inline-block;
+  text-align: center;
+}
+.cumplidoSelected, .cumplidoSelected:hover{
+  display: inline-block;
+  background-color: #10488c;
+  color:white;
+}
+.JM_popUp{
+  position:absolute;
+  z-index: 1000;
+  
+}
+.JM_popUpOptions{
+  border-radius: 5px;
+  border-style: solid;
+  border-color: hsl(227,72%,50%);
+}
+.JM_flecha{
+  margin-left: 8px;
+  height: 12px;
+  width: 34px;
+  background: url("img/flec.png") no-repeat;
+}
+.JM_editButton{
+  float: right;
+  background-color:hsl(227,72%,50%);
+  color:white;
+  width: 55px;
+  text-align: center;
+  border-radius: 5px;
+}
+.JM_editButton:hover{
+  background-color:hsl(227,72%,60%);
+}
+
+.JM_aceptButton{
+  background-color:hsl(227,72%,50%);
+  color:white;
+  width: 144px;
+  text-align: center;
+  border-radius: 5px;
+}
+.JM_aceptButton:hover{
+  background-color:hsl(227,72%,65%);
+}
+.JM_cancelButton{
+  background-color: hsl(356,86%,42%);
+  color:white;
+  width: 144px;
+  text-align: center;
+  border-radius: 5px;
+}
+.JM_cancelButton:hover{
+  background-color: hsl(356,86%,49%);
+}
+
+.JM_celdaConBorde{
+  border-color: blue;
+  border-left-style: solid;
+  border-left-width: 1px;
+  float: left;
+}
+.JM_documents{
+  width: 100%;
+  padding: 5px;
+  margin: 0px;
+  background-color: hsl(227,72%,57%);
+}
+.JM_document{
+  border-radius: 5px;
+  display:inline-block;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.JM_doc_edit_size{
+  width: 100%;
+}
+.JM_doc_show_size{
+  width: 48%;
+}
+.JM_deleteButton{
+  background: url("img/deleteGrey.png") no-repeat;
+  background-size: 24px;
+  vertical-align: middle;
+  height: 34px;
+  width: 34px;
+  padding: 5px;
+  position: relative;
+}
+.JM_deleteButton:hover{
+  background: url("img/deleteRed.png") no-repeat;
+  background-size: 24px;
+  
+}
+.grafics{
+  margin: 2px;
+  width: auto !important;
+  background: white !important;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding: 0 !important;
+}
+input{
+  padding-left: 20px;
+}
+
+.JM_formName{
+  float:left;
+  width:377px;
+  height:55px;
+  padding:8px;
+  color:white;
+  font-size:30px;
+  text-align:right;
+
+}
+.JM_formInput{
+  float:left;
+  width:377px;
+  height:55px;
+  margin:8px;
+  font-size:25px;
+}
+
+.ng-valid{
+  border-style: solid;
+  border-color: green;
+}
+.ng-invalid{
+  border-style: solid;
+  border-color: red;
+}
+.warningImg{
+  background: url("img/warning.png") no-repeat;
+  background-size: 78px;
+  height: 78px;
+  width: 78px;
+}
+
