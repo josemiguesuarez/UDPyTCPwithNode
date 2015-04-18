@@ -1,6 +1,8 @@
 var net = require('net');
 
-var HOST = '192.168.0.79';
+//var HOST = '157.253.205.50';
+//var HOST = '192.168.0.79';
+var HOST = '172.20.10.2';
 var PORT = 6969;
 
 setInterval(function() {

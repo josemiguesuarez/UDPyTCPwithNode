@@ -1,8 +1,8 @@
 module.exports = function (StatusModel){
 
 	var net = require('net');
-
-	var HOST = '157.253.205.50';
+	var HOST = '172.20.10.2';
+	//var HOST = '157.253.205.50';
 	var PORT = 6969;
 
 	net.createServer(function(sock) {

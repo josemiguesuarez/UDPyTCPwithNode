@@ -1,8 +1,12 @@
 // define model =================
 var mongoose        = require('mongoose');                     // mongoose for mongodb
-mongoose.connect('mongodb://josemigue:josesulo@ds061370.mongolab.com:61370/momapp');
+mongoose.connect('mongodb://josemigue:josesulo@54.81.180.188:61370/momapp');
+
 
 var db = mongoose.connection;
+db.once('open', function (callback) {
+  console.log('Conectado a mongodb');
+});
 db.on('error', console.error.bind(console, 'connection error:'));
 
 var ObjectId = mongoose.Schema.Types.ObjectId;

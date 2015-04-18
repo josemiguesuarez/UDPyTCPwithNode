@@ -1,7 +1,8 @@
 module.exports = function (StatusModel){
 
 	var PORT = 33333;
-	var HOST = '157.253.205.50';
+	var HOST = '172.20.10.2';
+	//var HOST = '157.253.205.50';
 
 	var dgram = require('dgram');
 	var server = dgram.createSocket('udp4');

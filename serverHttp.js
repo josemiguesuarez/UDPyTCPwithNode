@@ -190,7 +190,7 @@ module.exports = function (StatusModel, User){
             'vel']
             var line = 'fecha,';
             for (var j = 0; j < atributos.length; j++) {
-                line += atributos[j]+ ";"; 
+                line += atributos[j]+ ","; 
             };
             ws.write(line + '\n');
             for (var i = list.length - 1; i >= 0; i--) {
